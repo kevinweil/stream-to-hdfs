@@ -1,0 +1,23 @@
+<project name="hstream" default="jar">
+  <target name="clean">
+    <delete dir="build"/>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="build/classes"/>
+    <javac classpath="lib/hadoop-core-0.20.1+133.jar" srcdir="src" destdir="build/classes"/>
+  </target>
+
+  <target name="jar" depends="compile">
+    <mkdir dir="build/jar"/>
+    <jar destfile="build/hstream-1.0.jar" basedir="build/classes">
+      <manifest>
+        <attribute name="Main-Class" value="com.twitter.twadoop.hstream.StreamToHdfs"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="run" depends="jar">
+    <java classpath="lib/*" jar="build/jar/HelloWorld.jar" fork="true"/>
+  </target>
+</project>

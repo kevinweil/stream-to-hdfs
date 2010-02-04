@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Point this at the location of your hadoop binary.
+HADOOP="/usr/lib/hadoop/bin/hadoop"
+
+# Fill this in with the location of your hstream-1.0.jar
+HSTREAM_JAR="/path/to/my/hstream/jar/hstream-1.0.jar"
+
+cat | ${HADOOP} jar ${HSTREAM_JAR} $1
